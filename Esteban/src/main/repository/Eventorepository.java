@@ -2,7 +2,7 @@
 import model.evento;
 import java.util.ArrayList;
 import java.util.List;
-public class repository {
+public class Eventorepository {
 private List<evento> obtenertodos(){
     return listaeventos;
 }
