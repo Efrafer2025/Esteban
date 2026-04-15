@@ -1,25 +1,26 @@
-
-import model.evento;
-import java.util.ArrayList;
-import java.util.List;
-public class EventoRepository {
-private List<evento> obtenertodos(){
-    return listaeventos;
+import repository.EventoRepository;
+import model.Evento;
+import java.util.list;
+public class EventoService {
+    private EventoRepository repository = new EventoRepository();
+    public List<Evento> listar(){
+        return EventoRepository.obtenerTodos();
 }
-public Evento guardar(Evento evento){
-    listaEventos.add(evento);
-        return evento;
-    
-}
-public Evento buscarPorId(Long id){
-    for (Evento e: listaEventos){
-        if (e.getId().equals(id)){
-        return e;
-        }
+    public Evento crear (Evento evento) {
+        return repository.buscarPorId(id);
     }
-    return null;
+    public Evento actualizar (Long id,Evento nuevo){
+        Evento existente = repository.buscarPorId(id);
+        if (existente != null){
+            existente.setNombre(nuevo.getNombre());
+            existente.setTipo(nuevo.getTipo());
+            existente.setFecha(nuevo.getFecha());
+            existente.setUbicacion(nuevo.getUbicacion());
+            existente.setCapacidad(nuevo.getCapacidad());
+    }
+    return existente;
 }
-public void eliminarPorId(Long id){
-    listaEventos.removeIf(e -> e.getId().equals(id));
-}
+    public void eliminar(Long id){
+        repository.eliminar(id);
+    }
 }
